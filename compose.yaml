@@ -1,0 +1,14 @@
+services:
+  grocery-voice:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: grocery-voice
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUNBUFFERED: "1"
+    restart: unless-stopped

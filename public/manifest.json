@@ -1,0 +1,10 @@
+{
+  "name": "Grocery Voice",
+  "short_name": "Grocery Voice",
+  "description": "A simple voice-first grocery list.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7f4",
+  "theme_color": "#176b57",
+  "icons": []
+}
