@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#176b57">
   <meta name="description" content="A simple voice-first grocery list for everyday shopping.">
-  
   <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="/css/style.css">
   <title>Grocery Voice</title>
@@ -40,7 +39,28 @@
         </label>
         <button class="primary-button" type="submit">Add item <span aria-hidden="true">＋</span></button>
       </form>
-      <p class="hint">Voice input will be added in the next stage. For now, type an item or use the quick examples.</p>
+      <div class="voice-panel" aria-labelledby="voice-heading">
+        <div class="voice-toolbar">
+          <div>
+            <p class="eyebrow">SPEAK YOUR LIST</p>
+            <h3 id="voice-heading">Voice input</h3>
+          </div>
+          <label class="language-field" for="voice-language">
+            <span>Recognition language</span>
+            <select id="voice-language">
+              <option value="en-IN">English (India)</option>
+              <option value="hi-IN">Hindi (India)</option>
+            </select>
+          </label>
+        </div>
+        <div class="voice-actions">
+          <button id="voice-start" class="secondary-button" type="button">🎙 Start listening</button>
+          <button id="voice-stop" class="secondary-button" type="button" disabled>Stop</button>
+          <span id="voice-status" class="voice-status" role="status" aria-live="polite">Microphone is off</span>
+        </div>
+        <p id="voice-transcript" class="voice-transcript" aria-live="polite">Your recognized speech will appear here.</p>
+        <p class="hint">Speak naturally, then stop listening. Review the transcript and edit it before adding the item. Speech recognition needs a supported browser and may use an online service.</p>
+      </div>
       <div class="quick-add" aria-label="Quick add examples">
         <button type="button" data-item="Milk" data-quantity="1 litre">+ Milk</button>
         <button type="button" data-item="Eggs" data-quantity="12 pieces">+ Eggs</button>
@@ -81,9 +101,9 @@
     <footer><span>Grocery Voice</span><span>Private by default · Stored on this device</span></footer>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </main>
- 
   <script src="/js/storage.js" defer></script>
   <script src="/js/grocery.js" defer></script>
   <script src="/js/app.js" defer></script>
+  <script src="/js/voice.js" defer></script>
 </body>
 </html>

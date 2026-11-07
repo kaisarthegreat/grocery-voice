@@ -1,13 +1,5 @@
-const CACHE_NAME = "grocery-voice-v1";
-
-const APP_SHELL = [
-  "/",
-  "/css/style.css",
-  "/js/storage.js",
-  "/js/grocery.js",
-  "/js/app.js",
-  "/manifest.json"
-];
+const CACHE_NAME = "grocery-voice-v2";
+const APP_SHELL = ["/", "/css/style.css", "/js/storage.js", "/js/grocery.js", "/js/app.js", "/js/voice.js", "/manifest.json"];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
@@ -25,8 +17,10 @@ self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
   event.respondWith(
     caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+      if (response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+      }
       return response;
     }).catch(() => cached))
   );

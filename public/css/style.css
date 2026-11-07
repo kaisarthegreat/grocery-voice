@@ -79,3 +79,17 @@ footer { display: flex; justify-content: space-between; gap: 15px; padding: 10px
   .footer-actions button { flex: 1; }
   footer { flex-direction: column; gap: 5px; }
 }
+
+/* Stage 2: voice input */
+.voice-panel { margin-top: 22px; padding: 17px; border: 1px solid #e4ece6; border-radius: 12px; background: #fbfdfb; }
+.voice-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.voice-toolbar h3 { margin: 0; font-size: 15px; }
+.language-field { min-width: 180px; }
+.language-field select { width: 100%; height: 38px; padding: 0 10px; border: 1px solid #dfe7e2; border-radius: 8px; background: #fff; color: var(--ink); font: inherit; font-size: 12px; }
+.voice-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.voice-actions button:disabled { opacity: .45; cursor: not-allowed; }
+.voice-status { color: #71817b; font-size: 11px; }
+.voice-status.is-listening { color: #176b57; font-weight: 800; }
+.voice-transcript { min-height: 42px; margin: 12px 0 0; padding: 11px 12px; border: 1px dashed #d8e4dc; border-radius: 8px; background: #fff; color: #52645c; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+.voice-panel .hint { line-height: 1.5; }
+@media (max-width: 520px) { .voice-toolbar { align-items: stretch; flex-direction: column; } .language-field { min-width: 0; } }
