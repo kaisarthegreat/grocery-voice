@@ -1,5 +1,13 @@
 const CACHE_NAME = "grocery-voice-v1";
-const APP_SHELL = ["/", "/assets/css/style.css", "/assets/js/storage.js", "/assets/js/grocery.js", "/assets/js/app.js", "/assets/manifest.json"];
+
+const APP_SHELL = [
+  "/",
+  "/css/style.css",
+  "/js/storage.js",
+  "/js/grocery.js",
+  "/js/app.js",
+  "/manifest.json"
+];
 
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
