@@ -93,3 +93,17 @@ footer { display: flex; justify-content: space-between; gap: 15px; padding: 10px
 .voice-transcript { min-height: 42px; margin: 12px 0 0; padding: 11px 12px; border: 1px dashed #d8e4dc; border-radius: 8px; background: #fff; color: #52645c; font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
 .voice-panel .hint { line-height: 1.5; }
 @media (max-width: 520px) { .voice-toolbar { align-items: stretch; flex-direction: column; } .language-field { min-width: 0; } }
+
+/* Stage 3: natural-language list parsing */
+.transcript-field { display: block; margin-top: 14px; }
+.transcript-field > span { display: block; margin-bottom: 6px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.transcript-field textarea { display: block; width: 100%; min-height: 76px; resize: vertical; padding: 11px 12px; border: 1px solid #dfe7e2; border-radius: 8px; background: #fff; color: var(--ink); font: inherit; font-size: 13px; line-height: 1.5; }
+.parse-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.parse-actions button:disabled { opacity: .5; cursor: wait; }
+.parse-results { margin-top: 16px; padding-top: 14px; border-top: 1px solid #e4ece6; }
+.parse-results h4 { margin: 0 0 10px; font-size: 13px; }
+.parsed-items { display: grid; gap: 8px; margin-bottom: 12px; }
+.parsed-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 34px; gap: 8px; align-items: center; }
+.parsed-row input { width: 100%; min-width: 0; height: 36px; padding: 0 9px; border: 1px solid #dfe7e2; border-radius: 7px; background: #fff; color: var(--ink); font: inherit; font-size: 12px; }
+.parsed-row .delete-button { width: 34px; height: 34px; }
+@media (max-width: 520px) { .parsed-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 32px; gap: 5px; } }

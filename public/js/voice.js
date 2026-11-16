@@ -4,8 +4,7 @@
   const stopButton = document.getElementById("voice-stop");
   const languageSelect = document.getElementById("voice-language");
   const status = document.getElementById("voice-status");
-  const transcriptView = document.getElementById("voice-transcript");
-  const itemInput = document.getElementById("item-input");
+  const transcriptInput = document.getElementById("grocery-text");
 
   let recognition = null;
   let finalTranscript = "";
@@ -22,7 +21,7 @@
   if (!SpeechRecognition) {
     setStatus("Voice recognition is not supported in this browser.");
     startButton.disabled = true;
-    transcriptView.textContent = "You can still type your grocery items in the fields above.";
+    transcriptInput.placeholder = "Voice is unavailable. Type your grocery list here instead.";
     return;
   }
 
@@ -44,7 +43,7 @@
         }
       }
       const visibleText = `${finalTranscript} ${interim}`.trim();
-      transcriptView.textContent = visibleText || "Listening…";
+      transcriptInput.value = visibleText || "Listening…";
     };
 
     instance.onerror = event => {
@@ -73,12 +72,12 @@
         });
         if (!response.ok) throw new Error(`Server returned ${response.status}`);
         const data = await response.json();
-        itemInput.value = data.text;
-        itemInput.focus();
-        transcriptView.textContent = data.text;
-        setStatus("Transcript received. Review it before adding.");
+        transcriptInput.value = data.text;
+        transcriptInput.focus();
+        setStatus("Transcript received. Select Understand list to extract items.");
       } catch (error) {
-        setStatus("Could not send the transcript to the server. Your text is still shown above.");
+        transcriptInput.value = finalTranscript;
+        setStatus("Could not send the transcript to the server. Your text is still available to process.");
       } finally {
         isSubmitting = false;
       }
@@ -89,7 +88,7 @@
   startButton.addEventListener("click", () => {
     if (recognition) recognition.abort();
     finalTranscript = "";
-    transcriptView.textContent = "Listening…";
+    transcriptInput.value = "";
     shouldListen = true;
     recognition = createRecognition();
     setStatus("Listening… speak now", true);

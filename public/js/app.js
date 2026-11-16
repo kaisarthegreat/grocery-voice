@@ -138,5 +138,6 @@
   });
 
   window.addEventListener("grocery:storage-error", () => notify("Could not save. Check device storage."));
+  window.addEventListener("grocery:list-updated", render);
   render();
 })();
